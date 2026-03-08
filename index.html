@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blessings for Larrissa &amp; Baby</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Floating petals background -->
+  <div class="petals" id="petals"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <p class="header-sub">A shower of love for</p>
+    <h1 class="header-title">Larrissa</h1>
+    <p class="header-sub">&amp; her little one</p>
+    <a href="submit.html" class="btn-add">✦ Leave a Blessing ✦</a>
+  </header>
+
+  <!-- Book container -->
+  <main class="book-scene" id="bookScene">
+
+    <!-- Book -->
+    <div class="book" id="book">
+
+      <!-- Cover (left always visible as book spine area) -->
+      <div class="book-cover-left"></div>
+
+      <!-- Pages wrapper -->
+      <div class="pages-wrapper" id="pagesWrapper">
+        <!-- Pages injected by JS -->
+      </div>
+
+      <!-- Back cover -->
+      <div class="book-cover-right"></div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="book-nav">
+      <button class="nav-btn" id="prevBtn" aria-label="Previous page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <span class="page-indicator" id="pageIndicator">1 / 1</span>
+      <button class="nav-btn" id="nextBtn" aria-label="Next page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+  </main>
+
+  <!-- Loading state -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-flower">✿</div>
+    <p>Opening the book of blessings…</p>
+  </div>
+
+  <!-- Empty state -->
+  <div class="empty-state" id="emptyState" style="display:none;">
+    <p>No blessings yet — be the first! 💛</p>
+    <a href="submit.html" class="btn-add">Leave a Blessing</a>
+  </div>
+
+  <footer class="site-footer">
+    <a href="submit.html" class="btn-add btn-add--small">✦ Add Your Blessing ✦</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

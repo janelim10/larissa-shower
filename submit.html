@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leave a Blessing — Larrissa's Baby Shower</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="submit-page">
+
+  <div class="petals" id="petals"></div>
+
+  <div class="submit-container">
+
+    <a href="index.html" class="back-link">← Back to the Book</a>
+
+    <div class="submit-card">
+      <div class="submit-flower">✿</div>
+      <h1 class="submit-title">Leave a Blessing</h1>
+      <p class="submit-subtitle">Write something beautiful for Larrissa &amp; her little one. Your words will live in her memory forever.</p>
+
+      <!-- Success message (hidden by default) -->
+      <div class="success-message" id="successMessage" style="display:none;">
+        <div class="success-icon">💛</div>
+        <h2>Your blessing has been added!</h2>
+        <p>Thank you for sharing your love with Larrissa.</p>
+        <div class="success-actions">
+          <a href="submit.html" class="btn-add btn-add--small">Add Another</a>
+          <a href="index.html" class="btn-add btn-add--small btn-add--outline">See the Book</a>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form class="bless-form" id="blessForm">
+
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="e.g. Aunt Maria" required maxlength="80" />
+        </div>
+
+        <div class="form-group">
+          <label for="relationship">How do you know Larrissa?</label>
+          <input type="text" id="relationship" name="relationship" placeholder="e.g. Best friend, Sister, Colleague…" maxlength="80" />
+        </div>
+
+        <div class="form-group">
+          <label for="blessing">Your Blessing or Wish</label>
+          <textarea id="blessing" name="blessing" rows="5"
+            placeholder="Write your heartfelt message here…" required maxlength="600"></textarea>
+          <span class="char-count"><span id="charCount">0</span> / 600</span>
+        </div>
+
+        <div class="form-group">
+          <label for="photo">Add a Photo <span class="optional">(optional)</span></label>
+          <div class="photo-drop" id="photoDrop">
+            <input type="file" id="photo" name="photo" accept="image/*" class="photo-input" />
+            <div class="photo-drop-ui" id="photoDropUI">
+              <div class="photo-icon">🌸</div>
+              <p>Tap to choose a photo</p>
+              <p class="photo-hint">JPG, PNG or GIF · max 5 MB</p>
+            </div>
+            <img id="photoPreview" class="photo-preview" style="display:none;" alt="Preview" />
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <span id="submitText">Send My Blessing ✦</span>
+          <span id="submitLoading" style="display:none;">Sending…</span>
+        </button>
+
+        <p class="form-note" id="formError" style="display:none; color:#b05070;"></p>
+
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/submit.js"></script>
+  <script>
+    // Floating petals
+    const petalContainer = document.getElementById('petals');
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDuration = (6 + Math.random() * 8) + 's';
+      p.style.animationDelay = (Math.random() * 10) + 's';
+      p.style.fontSize = (10 + Math.random() * 14) + 'px';
+      p.textContent = ['✿', '❀', '✾', '❁', '✽'][Math.floor(Math.random() * 5)];
+      petalContainer.appendChild(p);
+    }
+  </script>
+</body>
+</html>
