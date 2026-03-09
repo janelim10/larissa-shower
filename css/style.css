@@ -485,46 +485,46 @@ body {
 .corner-hotspot {
   position: absolute;
   bottom: 0;
-  width: 72px;
-  height: 72px;
+  width: 56px;
+  height: 56px;
   cursor: pointer;
   z-index: 20;
   transition: opacity 0.3s;
+  display: flex;
+  align-items: flex-end;
 }
 
-/* Right bottom corner → next page */
+/* Right bottom corner of right page → next */
 .corner-hotspot--next {
-  right: 16px;
+  right: 0;
+  justify-content: flex-end;
+  padding: 0 12px 12px 0;
 }
 .corner-hotspot--next::after {
   content: '›';
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: rgba(176, 80, 112, 0.30);
   animation: bounceRight 1.6s ease-in-out infinite;
   transition: color 0.2s;
   line-height: 1;
 }
-.corner-hotspot--next:hover::after { color: rgba(176, 80, 112, 0.65); }
+.corner-hotspot--next:hover::after { color: rgba(176, 80, 112, 0.7); }
 
-/* Left bottom corner → previous page */
+/* Left bottom corner of left page → prev */
 .corner-hotspot--prev {
-  left: 16px;
+  left: 0;
+  justify-content: flex-start;
+  padding: 0 0 12px 12px;
 }
 .corner-hotspot--prev::after {
   content: '‹';
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: rgba(176, 80, 112, 0.30);
   animation: bounceLeft 1.6s ease-in-out infinite;
   transition: color 0.2s;
   line-height: 1;
 }
-.corner-hotspot--prev:hover::after { color: rgba(176, 80, 112, 0.65); }
+.corner-hotspot--prev:hover::after { color: rgba(176, 80, 112, 0.7); }
 
 @keyframes bounceRight {
   0%, 100% { transform: translateX(0);   opacity: 0.7; }
