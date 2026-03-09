@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=2" />
+  <link rel="stylesheet" href="css/style.css?v=3" />
 </head>
 <body>
 
@@ -37,21 +37,21 @@
         <!-- Corner flip zones -->
         <div class="corner-hotspot corner-hotspot--next" id="cornerNext" title="Next page"></div>
         <div class="corner-hotspot corner-hotspot--prev" id="cornerPrev" title="Previous page"></div>
+      </div>
 
-        <!-- Closed book cover (shown on first load) -->
-        <div class="book-closed" id="bookClosed">
-          <div class="book-closed-spine"></div>
-          <div class="book-closed-front" id="bookCoverFront">
-            <div class="bcc-inner">
-              <div class="bcc-flowers">✿ ❀ ✾</div>
-              <div class="bcc-rule"></div>
-              <p class="bcc-label">A Book of Blessings for</p>
-              <h2 class="bcc-name">Larrissa</h2>
-              <p class="bcc-sub">&amp; her little one</p>
-              <div class="bcc-rule"></div>
-              <div class="bcc-flowers">✿ ❀ ✾</div>
-              <p class="bcc-hint">open</p>
-            </div>
+      <!-- Closed book cover (shown on first load, outside pages-wrapper to avoid preserve-3d z-index issues) -->
+      <div class="book-closed" id="bookClosed">
+        <div class="book-closed-spine"></div>
+        <div class="book-closed-front" id="bookCoverFront">
+          <div class="bcc-inner">
+            <div class="bcc-flowers">✿ ❀ ✾</div>
+            <div class="bcc-rule"></div>
+            <p class="bcc-label">A Book of Blessings for</p>
+            <h2 class="bcc-name">Larrissa</h2>
+            <p class="bcc-sub">&amp; her little one</p>
+            <div class="bcc-rule"></div>
+            <div class="bcc-flowers">✿ ❀ ✾</div>
+            <p class="bcc-hint">open</p>
           </div>
         </div>
       </div>
