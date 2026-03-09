@@ -494,37 +494,46 @@ body {
 
 /* Right bottom corner → next page */
 .corner-hotspot--next {
-  right: 28px;
-  clip-path: polygon(100% 0, 100% 100%, 0 100%);
-  background: linear-gradient(135deg, transparent 40%, rgba(201,169,110,0.25) 100%);
+  right: 16px;
 }
 .corner-hotspot--next::after {
-  content: '';
+  content: '›';
   position: absolute;
-  inset: 0;
-  clip-path: polygon(100% 0, 100% 100%, 0 100%);
-  background: linear-gradient(135deg, transparent 40%, rgba(201,169,110,0.5) 100%);
-  opacity: 0;
-  transition: opacity 0.2s;
+  bottom: 10px;
+  right: 10px;
+  font-size: 1.3rem;
+  color: rgba(176, 80, 112, 0.30);
+  animation: bounceRight 1.6s ease-in-out infinite;
+  transition: color 0.2s;
+  line-height: 1;
 }
-.corner-hotspot--next:hover::after { opacity: 1; }
+.corner-hotspot--next:hover::after { color: rgba(176, 80, 112, 0.65); }
 
 /* Left bottom corner → previous page */
 .corner-hotspot--prev {
-  left: 28px;
-  clip-path: polygon(0 0, 100% 100%, 0 100%);
-  background: linear-gradient(225deg, transparent 40%, rgba(201,169,110,0.25) 100%);
+  left: 16px;
 }
 .corner-hotspot--prev::after {
-  content: '';
+  content: '‹';
   position: absolute;
-  inset: 0;
-  clip-path: polygon(0 0, 100% 100%, 0 100%);
-  background: linear-gradient(225deg, transparent 40%, rgba(201,169,110,0.5) 100%);
-  opacity: 0;
-  transition: opacity 0.2s;
+  bottom: 10px;
+  left: 10px;
+  font-size: 1.3rem;
+  color: rgba(176, 80, 112, 0.30);
+  animation: bounceLeft 1.6s ease-in-out infinite;
+  transition: color 0.2s;
+  line-height: 1;
 }
-.corner-hotspot--prev:hover::after { opacity: 1; }
+.corner-hotspot--prev:hover::after { color: rgba(176, 80, 112, 0.65); }
+
+@keyframes bounceRight {
+  0%, 100% { transform: translateX(0);   opacity: 0.7; }
+  50%       { transform: translateX(4px); opacity: 1;   }
+}
+@keyframes bounceLeft {
+  0%, 100% { transform: translateX(0);    opacity: 0.7; }
+  50%       { transform: translateX(-4px); opacity: 1;   }
+}
 
 /* ────────────────────────────────────────────
    Book Navigation
