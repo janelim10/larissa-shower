@@ -45,7 +45,8 @@ async function loadBlessings() {
 
 // ── Render ─────────────────────────────────────
 function renderBook() {
-  pagesWrapper.innerHTML = '';
+  // Remove only page spreads — preserve corner hotspots and other children
+  pagesWrapper.querySelectorAll('.page-spread').forEach(el => el.remove());
 
   if (blessings.length === 0) {
     emptyState.style.display = 'flex';
