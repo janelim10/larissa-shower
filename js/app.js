@@ -166,33 +166,38 @@ function updateNav(total) {
 
 function goTo(index) {
   if (isFlipping) return;
-  const spreads = pagesWrapper.querySelectorAll('.page-spread');
+  const spreads = [...pagesWrapper.querySelectorAll('.page-spread')];
   if (index < 0 || index >= spreads.length) return;
 
   isFlipping = true;
-
-  const current = pagesWrapper.querySelector('.page-spread.active');
-  const next    = spreads[index];
   const forward = index > currentPage;
+  const fromSpread = spreads[currentPage];
+  const toSpread   = spreads[index];
 
-  // Animate out current
-  if (current) {
-    current.classList.add(forward ? 'flip-out-left' : 'flip-out-right');
-    current.addEventListener('animationend', () => {
-      current.classList.remove('active', 'flip-out-left', 'flip-out-right');
-    }, { once: true });
-  }
+  // Stack: from-spread on top, to-spread underneath
+  fromSpread.style.zIndex = '3';
+  toSpread.classList.add('active');
+  toSpread.style.zIndex = '1';
 
-  // Animate in next
-  next.classList.add(forward ? 'flip-in-right' : 'flip-in-left');
-  next.classList.add('active');
-  next.addEventListener('animationend', () => {
-    next.classList.remove('flip-in-right', 'flip-in-left');
+  // Create a single flipping half-page (the turning side)
+  const flipper = document.createElement('div');
+  flipper.className = `page-flipper page-flipper--${forward ? 'forward' : 'backward'}`;
+  pagesWrapper.appendChild(flipper);
+
+  // At the halfway point the flipper is edge-on — swap the spread content
+  // without the user noticing (classic book-flip trick)
+  const swapTimer = setTimeout(() => {
+    fromSpread.classList.remove('active');
+    fromSpread.style.zIndex = '';
+    toSpread.style.zIndex = '';
+    currentPage = index;
+    updateNav(spreads.length);
+  }, 260); // ~half of 520ms animation
+
+  flipper.addEventListener('animationend', () => {
+    flipper.remove();
     isFlipping = false;
   }, { once: true });
-
-  currentPage = index;
-  updateNav(spreads.length);
 }
 
 prevBtn.addEventListener('click', () => goTo(currentPage - 1));
