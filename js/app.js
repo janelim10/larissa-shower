@@ -18,6 +18,7 @@ const loadingScreen  = document.getElementById('loadingScreen');
 const emptyState     = document.getElementById('emptyState');
 const cornerNext     = document.getElementById('cornerNext');
 const cornerPrev     = document.getElementById('cornerPrev');
+const bookClosed     = document.getElementById('bookClosed');
 
 // ── Boot ───────────────────────────────────────
 window.addEventListener('DOMContentLoaded', async () => {
@@ -213,6 +214,15 @@ prevBtn.addEventListener('click', () => goTo(currentPage - 1));
 nextBtn.addEventListener('click', () => goTo(currentPage + 1));
 cornerNext.addEventListener('click', () => goTo(currentPage + 1));
 cornerPrev.addEventListener('click', () => goTo(currentPage - 1));
+
+// ── Open book on cover click ───────────────────
+bookClosed.addEventListener('click', () => {
+  bookClosed.classList.add('is-opening');
+  const front = bookClosed.querySelector('.book-closed-front');
+  front.addEventListener('animationend', () => {
+    bookClosed.classList.add('is-gone');
+  }, { once: true });
+});
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
