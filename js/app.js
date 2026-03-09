@@ -16,6 +16,8 @@ const nextBtn        = document.getElementById('nextBtn');
 const pageIndicator  = document.getElementById('pageIndicator');
 const loadingScreen  = document.getElementById('loadingScreen');
 const emptyState     = document.getElementById('emptyState');
+const cornerNext     = document.getElementById('cornerNext');
+const cornerPrev     = document.getElementById('cornerPrev');
 
 // ── Boot ───────────────────────────────────────
 window.addEventListener('DOMContentLoaded', async () => {
@@ -159,9 +161,15 @@ function blankPageHTML() {
 
 // ── Navigation ─────────────────────────────────
 function updateNav(total) {
-  prevBtn.disabled = currentPage === 0;
-  nextBtn.disabled = currentPage === total - 1;
+  const atStart = currentPage === 0;
+  const atEnd   = currentPage === total - 1;
+  prevBtn.disabled = atStart;
+  nextBtn.disabled = atEnd;
   pageIndicator.textContent = `${currentPage + 1} / ${total}`;
+  cornerPrev.style.opacity = atStart ? '0' : '1';
+  cornerPrev.style.pointerEvents = atStart ? 'none' : 'auto';
+  cornerNext.style.opacity = atEnd   ? '0' : '1';
+  cornerNext.style.pointerEvents = atEnd   ? 'none' : 'auto';
 }
 
 function goTo(index) {
@@ -202,6 +210,8 @@ function goTo(index) {
 
 prevBtn.addEventListener('click', () => goTo(currentPage - 1));
 nextBtn.addEventListener('click', () => goTo(currentPage + 1));
+cornerNext.addEventListener('click', () => goTo(currentPage + 1));
+cornerPrev.addEventListener('click', () => goTo(currentPage - 1));
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {

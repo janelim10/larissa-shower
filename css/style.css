@@ -480,6 +480,53 @@ body {
 }
 
 /* ────────────────────────────────────────────
+   Corner flip hotspots
+──────────────────────────────────────────── */
+.corner-hotspot {
+  position: absolute;
+  bottom: 0;
+  width: 72px;
+  height: 72px;
+  cursor: pointer;
+  z-index: 20;
+  transition: opacity 0.3s;
+}
+
+/* Right bottom corner → next page */
+.corner-hotspot--next {
+  right: 28px;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  background: linear-gradient(135deg, transparent 40%, rgba(201,169,110,0.25) 100%);
+}
+.corner-hotspot--next::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  background: linear-gradient(135deg, transparent 40%, rgba(201,169,110,0.5) 100%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.corner-hotspot--next:hover::after { opacity: 1; }
+
+/* Left bottom corner → previous page */
+.corner-hotspot--prev {
+  left: 28px;
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+  background: linear-gradient(225deg, transparent 40%, rgba(201,169,110,0.25) 100%);
+}
+.corner-hotspot--prev::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+  background: linear-gradient(225deg, transparent 40%, rgba(201,169,110,0.5) 100%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.corner-hotspot--prev:hover::after { opacity: 1; }
+
+/* ────────────────────────────────────────────
    Book Navigation
 ──────────────────────────────────────────── */
 .book-nav {
